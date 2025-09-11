@@ -14,7 +14,7 @@ const ns = "layout-provider";
 const { frontmatter } = useData();
 
 // 默认文档风
-const currentStyle = ref("doc");
+const currentStyle = ref("blog-body");
 const teekConfig = ref(teekDocConfig);
 provide(teekConfigContext, teekConfig);
 
@@ -56,7 +56,7 @@ const handleConfigSwitch = (config: TeekConfig, style: string) => {
   <Teek.Layout>
     <template #teek-theme-enhance-bottom>
       <div :class="[ns, 'flx-align-center']">
-        <ConfigSwitch v-model="currentStyle" @switch="handleConfigSwitch" />
+        <ConfigSwitch v-if="false" v-model="currentStyle" @switch="handleConfigSwitch" />
       </div>
     </template>
 

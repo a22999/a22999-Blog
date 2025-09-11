@@ -103,7 +103,7 @@ const handlePagination = () => {
     const rootStyles = getComputedStyle(document.documentElement);
     const navHeight = removeUnit(rootStyles.getPropertyValue("--vp-c-text-1"));
     // 滚动返回时，减去导航栏的高度
-    document.querySelector("html")?.scrollTo({ top: window.innerHeight - navHeight, behavior: "smooth" });
+    document.querySelector("html")?.scrollTo({ top: window.innerHeight - (navHeight || 0), behavior: "smooth" });
   });
 };
 

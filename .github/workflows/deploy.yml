@@ -45,6 +45,9 @@ jobs:
         uses: actions/configure-pages@v4
       - name: Install dependencies
         run: pnpm install # 使用 pnpm 安装依赖
+      - name: Build build tools
+        run: pnpm run -C build stub
+        
       - name: Build packages
         run: pnpm run build # 完整构建所有包
       - name: Build with VitePress

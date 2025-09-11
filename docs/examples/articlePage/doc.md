@@ -1,7 +1,12 @@
 ---
+date: 2025-09-11 22:05:34
+title: doc
 layout: false
 permalink: /iframe/articlePage/doc
 article: false
+categories:
+  - examples
+  - articlePage
 ---
 
 <script setup lang="ts">

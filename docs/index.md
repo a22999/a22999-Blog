@@ -34,22 +34,6 @@ features:
     details: 只需 Markdown 即可轻松创建美观的文档站点，配合多维索引快速定位每个知识点。
 ---
 
-## 风格切换
-
-Teek 可以通过配置搭配出各种风格，而当前文档站默认仅演示较简约的文档风格。
-
-在右上角 <TkIcon :icon="readingIcon" :size="20" /> 图标的 <mark>配置切换</mark> 区域可以切换其他风格。因为配置较多，很多的功能并没有完全演示，需要安装 Teek，然后自行探索出自己喜欢的风格。
-
-## 💡 反馈交流
-
-在使用过程中有任何问题和想法，请给我提 [Issue](https://github.com/Kele-Bingtang/vitepress-theme-teek/issues)。 你也可以在 Issue 查看别人提的问题和解决方案。
-
-或者加入我们的交流群（添加我的微信并备注 <mark>进群</mark>）：
-
-<img src="https://gcore.jsdelivr.net/gh/Kele-Bingtang/static/index/20250412000919.png" alt="添加我微信备注「进群」" style="width: 180px;" />
-
-如果图片链接失效，可以在微信右上角 -> 添加朋友，然后搜索 `teekers` 来添加我的微信。
-
 <script setup lang="ts">
 import { onMounted } from "vue";
 import { useData } from "vitepress";

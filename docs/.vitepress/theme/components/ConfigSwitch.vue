@@ -42,9 +42,9 @@ const emit = defineEmits<{
   switch: [config: typeof teekDocConfig, style: string];
 }>();
 
-// 默认文档风格
-const themeStyle = defineModel({ default: "doc" });
-const currentStyle = useStorage("tk:configStyle", "doc");
+// 默认博客全图风格
+const themeStyle = defineModel({ default: "blog-body" });
+const currentStyle = useStorage("tk:configStyle", "blog-body");
 const teekConfig = ref(teekDocConfig);
 
 const { copy, copied } = useClipboard();
@@ -87,6 +87,16 @@ const handleCopy = async () => {
 };
 </script>
 
+<!-- 
+  这是一个网站风格(配置切换 布局切换 风格切换)切换的组件
+  通过 BaseTemplate 组件来展示不同的主题配置选项
+  目前已通过 v-if="false" 将其隐藏
+  
+  功能说明:
+  1. 提供了文档风格和多种博客风格的切换
+  2. 可以复制当前配置
+  3. 包含帮助说明和使用提示
+-->
 <template>
   <BaseTemplate
     :class="ns"

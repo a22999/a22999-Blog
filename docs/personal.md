@@ -1,9 +1,12 @@
 ---
 title: 支持这个项目
-date: 2025-08-06 23:53:30
+date: 2025-08-07 07:53:30
 sidebar: false
 article: false
 outline: false
+permalink: /a872e6
+categories:
+  -
 ---
 
 如果您正在使用这个项目并感觉这个项目给你带来帮助，或者是想支持我继续开发，您可以通过如下任意方式支持我：

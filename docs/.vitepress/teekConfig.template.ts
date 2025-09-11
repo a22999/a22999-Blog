@@ -449,7 +449,14 @@ export const teekConfig = defineTeekConfig({
     catalogueOption: {}, // catalogues 插件配置项
     docAnalysis: true, // 是否启用 docAnalysis 插件
     docAnalysisOption: {}, // docAnalysis 插件配置项
-    fileContentLoaderIgnore: [], // fileContentLoader 插件扫描 markdown 文档时，指定忽略路径，格式为 glob 表达式，如 **/test/**
+    fileContentLoaderIgnore: [
+      "**/01.指南/**",
+      "**/10.配置/**",
+      "**/15.主题开发/**",
+      "**/20.资源/**",
+      "**/30.生态/**",
+      "**/examples/**",
+    ], // fileContentLoader 插件扫描 markdown 文档时，指定忽略路径，格式为 glob 表达式，如 **/test/**
     autoFrontmatter: true, // 是否启用 autoFrontmatter 插件
     // autoFrontmatter 插件配置项
     autoFrontmatterOption: {

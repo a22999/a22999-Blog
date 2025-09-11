@@ -18,6 +18,7 @@ export default defineConfig({
   extends: teekConfig,
   title: "Vitepress Theme Teek",
   description: description,
+  base: '/repo/', // 如果部署到 user.github.io/repo/
   cleanUrls: false,
   lastUpdated: true,
   lang: "zh-CN",

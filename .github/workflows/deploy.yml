@@ -40,15 +40,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: pnpm # 使用 pnpm 缓存
+          cache: npm # 或 pnpm / yarn
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Install dependencies
-        run: pnpm install # 使用 pnpm 安装依赖
-      - name: Build packages
-        run: pnpm run stub # 构建所有包
+        run: npm ci # 或 pnpm install / yarn install / bun install
       - name: Build with VitePress
-        run: pnpm run docs:build # 使用 pnpm 构建文档
+        run: npm run docs:build # 或 pnpm docs:build / yarn docs:build / bun run docs:build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

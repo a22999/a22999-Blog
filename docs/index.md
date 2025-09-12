@@ -27,13 +27,13 @@ import { readingIcon } from "vitepress-theme-teek"
 
 const { frontmatter } = useData();
 onMounted(() => {
-  const heroTextDom = document.querySelector<HTMLElement>(".VPHero .text");
-  const textDom = document.querySelector<HTMLElement>("#hero-text");
+  // const heroTextDom = document.querySelector<HTMLElement>(".VPHero .text");
+  // const textDom = document.querySelector<HTMLElement>("#hero-text");
 
-  if (!heroTextDom || !textDom) return;
+  // if (!heroTextDom || !textDom) return;
 
-  while (heroTextDom.lastChild) heroTextDom.lastChild.remove();
-  heroTextDom.append(textDom);
+  // while (heroTextDom.lastChild) heroTextDom.lastChild.remove();
+  // heroTextDom.append(textDom);
 });
 </script>
 
@@ -52,6 +52,10 @@ onMounted(() => {
   --vp-home-hero-image-background-image: linear-gradient(-45deg, #bd34fe 50%, #47caff 50%);
   --vp-home-hero-image-filter: blur(44px);
 } */
+
+.VPHero {
+  display: none !important;
+}
 
 /* 彩虹动画 */
 :root {

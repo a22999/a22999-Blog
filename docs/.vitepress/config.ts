@@ -144,7 +144,7 @@ export default defineConfig({
       //   ],
       // },
     ],
-    socialLinks: [{ icon: "github", link: "https://github.com/Kele-Bingtang/vitepress-theme-teek" }],
+    socialLinks: [{ icon: "github", link: "https://github.com/a22999/a22999-Blog" }],
     search: {
       provider: "algolia",
       options: {

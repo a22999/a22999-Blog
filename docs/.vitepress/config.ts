@@ -43,6 +43,7 @@ export default defineConfig({
       },
     ],
     ["meta", { name: "keywords", description }],
+    ["meta", { name: "algolia-site-verification", content: "CCFB3324220D59C7" }],
     // ["meta", { name: "baidu-site-verification", content: "codeva-GdK2q9MO1i" }], // 百度收录
     // ["meta", { name: "msvalidate.01", content: "48CABE70F538B8D117567176ABF325AF" }], // Bing 收录验证
     // ["script", { charset: "UTF-8", id: "LA_COLLECT", src: "//sdk.51.la/js-sdk-pro.min.js" }], // 51.la
@@ -148,16 +149,16 @@ export default defineConfig({
     search: {
       provider: "algolia",
       options: {
-        appId: "2LFTZ9LKO9",
-        apiKey: "017332fa7dc0bbe5e1637b215f92a5d1",
-        indexName: "vitepress_theme_teek",
+        appId: "KGZLPCPBA1",
+        apiKey: "688c807af03c1f1d132e6c9bdd09356b",
+        indexName: "a22999-Blog",
       },
     },
     // 注释以关闭 "在 GitHub 上编辑此页" 功能
-    // editLink: {
-    //   text: "在 GitHub 上编辑此页",
-    //   pattern: "https://github.com/Kele-Bingtang/vitepress-theme-teek/edit/master/docs/:path",
-    // },
+    editLink: {
+      text: "在 GitHub 上编辑此页",
+      pattern: "https://a22999.github.io/a22999-Blog/edit/master/docs/:path",
+    },
   },
   vite: {
     plugins: [llmstxt() as any],

@@ -51,6 +51,7 @@ const { copy, copied } = useClipboard();
 const { isMobile } = useCommon();
 
 const update = async (style: string) => {
+  console.log(style);
   if (style === "doc") teekConfig.value = teekDocConfig;
   if (style === "blog") teekConfig.value = teekBlogConfig;
   if (style === "blog-part") teekConfig.value = teekBlogParkConfig;

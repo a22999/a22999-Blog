@@ -3,7 +3,7 @@ import type { TeekConfig } from "vitepress-theme-teek";
 import Teek, { teekConfigContext, clockIcon } from "vitepress-theme-teek";
 import { useData } from "vitepress";
 import { watch, nextTick, ref, provide } from "vue";
-import { teekDocConfig } from "../config/teekConfig";
+import { teekDocConfig, teekBlogBodyConfig } from "../config/teekConfig";
 import { useRibbon } from "../composables/useRibbon";
 import { useRuntime } from "../composables/useRuntime";
 import ConfigSwitch from "./ConfigSwitch.vue";
@@ -13,9 +13,10 @@ import NotFound from "./404.vue";
 const ns = "layout-provider";
 const { frontmatter } = useData();
 
-// 默认文档风
+// 默认博客主体风格
 const currentStyle = ref("blog-body");
-const teekConfig = ref(teekDocConfig);
+// 根据初始样式设置对应的配置
+const teekConfig = ref(teekBlogBodyConfig);
 provide(teekConfigContext, teekConfig);
 
 // 彩带背景

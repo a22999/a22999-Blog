@@ -50,7 +50,7 @@ const teekBlogCommonConfig: TeekConfig = {
 export const teekBlogConfig: TeekConfig = {
   ...teekBlogCommonConfig,
   banner: {
-    name: "🎉 a22999",
+    name: "🎉 a22999’s Blog",
     description: "故事由我书写，旅程由你见证，传奇由她聆听 —— 来自 Young Kbt",
     bgStyle: "partImg",
   },
@@ -62,7 +62,7 @@ export const teekBlogParkConfig: TeekConfig = {
   banner: {
     name: "🎉 a22999's Blog",
     bgStyle: "partImg",
-    imgSrc: ["/blog/bg1.webp", "/blog/bg2.webp", "/blog/bg3.webp"],
+    imgSrc: ["/blog/bg1.png"],
     description: ["a22999"],
     descStyle: "switch",
   },
@@ -92,13 +92,13 @@ export const teekBlogFullConfig: TeekConfig = {
     coverImgMode: "full",
   },
   banner: {
-    name: "🎉 Teek Blog",
+    name: "🎉 a22999’s Blog",
     bgStyle: "fullImg",
-    imgSrc: ["/blog/bg1.webp", "/blog/bg2.webp", "/blog/bg3.webp"],
+    imgSrc: ["/blog/bg1.png"],
     description: [
-      "故事由我书写，旅程由你见证，传奇由她聆听 —— 来自 Young Kbt",
-      "积跬步以至千里，致敬每个爱学习的你 —— 来自 Evan Xu",
-      "这一生波澜壮阔或是不惊都没问题 —— 来自 Weibw",
+      "不要高估一年的积蓄,也不要低估十年的改变",
+      "圣人之所以为圣,是善假于物的结果",
+      "让人止步不前的从来不是人或环境,而是想法和认知",
     ],
     descStyle: "types",
   },
@@ -172,13 +172,13 @@ export const teekBlogCardConfig: TeekConfig = {
   },
   homeCardListPosition: "left",
   banner: {
-    name: "🎉 Teek Blog",
+    name: "🎉 a22999’s Blog",
     bgStyle: "fullImg",
-    imgSrc: ["/blog/bg1.webp", "/blog/bg2.webp", "/blog/bg3.webp"],
+    imgSrc: ["/blog/bg1.png"],
     description: [
-      "故事由我书写，旅程由你见证，传奇由她聆听 —— 来自 Young Kbt",
-      "积跬步以至千里，致敬每个爱学习的你 —— 来自 Evan Xu",
-      "这一生波澜壮阔或是不惊都没问题 —— 来自 Weibw",
+      "不要高估一年的积蓄,也不要低估十年的改变",
+      "圣人之所以为圣,是善假于物的结果",
+      "让人止步不前的从来不是人或环境,而是想法和认知",
     ],
     descStyle: "types",
   },

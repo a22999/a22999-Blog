@@ -1,7 +1,7 @@
 <script setup lang="ts" name="ConfigSwitch">
 import { TkSegmented, TkMessage, magicIcon, isClient, useCommon } from "vitepress-theme-teek";
 import BaseTemplate from "@teek/components/theme/ThemeEnhance/src/components/BaseTemplate.vue";
-import { nextTick, onMounted, ref, watch } from "vue";
+import { nextTick, ref, watch } from "vue";
 import { useClipboard, useStorage } from "@teek/composables";
 import {
   teekDocConfig,
@@ -44,14 +44,13 @@ const emit = defineEmits<{
 
 // 默认博客全图风格
 const themeStyle = defineModel({ default: "blog-body" });
-const currentStyle = ref("blog-body");
+const currentStyle = useStorage("tk:configStyle", "blog-body");
 const teekConfig = ref(teekDocConfig);
 
 const { copy, copied } = useClipboard();
 const { isMobile } = useCommon();
 
 const update = async (style: string) => {
-  console.log(style);
   if (style === "doc") teekConfig.value = teekDocConfig;
   if (style === "blog") teekConfig.value = teekBlogConfig;
   if (style === "blog-part") teekConfig.value = teekBlogParkConfig;
@@ -79,11 +78,6 @@ watch(
   },
   { immediate: true }
 );
-
-onMounted(() => {
-  // 直接设置当前样式为博客主体样式
-  currentStyle.value = "blog-body";
-});
 
 const handleCopy = async () => {
   await copy(JSON.stringify(teekConfig.value, null, 2));

@@ -314,7 +314,7 @@ export const teekConfig = defineTeekConfig({
     bottomMessage: ["上面的内容和图标都可以修改（本条内容也可以隐藏的）"],
     // 主题版权配置
     theme: {
-      show: true, // 是否显示主题版权，建议显示
+      show: false, // 是否显示主题版权，建议显示
       name: "", // 自定义名称
       link: "", // 自定义链接
     },
@@ -417,29 +417,29 @@ export const teekConfig = defineTeekConfig({
     limit: 3, // 文章最近更新栏显示数量
   },
   // 评论配置，目前内置 Giscus、Twikoo、Waline、Artalk 四种评论插件
-  comment: {
-    provider: "giscus", // 评论区提供者
-    // 评论区配置项，根据 provider 不同而不同，具体看对应官网的使用介绍
-    options: {
-      // twikoo 配置，官网：https://twikoo.js.org/
-      // envId: "your envId",
+  // comment: {
+  //   provider: "giscus", // 评论区提供者
+  //   // 评论区配置项，根据 provider 不同而不同，具体看对应官网的使用介绍
+  //   options: {
+  //     // twikoo 配置，官网：https://twikoo.js.org/
+  //     // envId: "your envId",
 
-      // waline 配置，官网：https://waline.js.org/
-      // serverURL: "your serverURL",
-      // jsLink: "https://unpkg.com/@waline/client@v3/dist/waline.js",
-      // cssLink: "https://unpkg.com/@waline/client@v3/dist/waline.css",
+  //     // waline 配置，官网：https://waline.js.org/
+  //     // serverURL: "your serverURL",
+  //     // jsLink: "https://unpkg.com/@waline/client@v3/dist/waline.js",
+  //     // cssLink: "https://unpkg.com/@waline/client@v3/dist/waline.css",
 
-      // giscus 配置，官网：https://giscus.app/zh-CN
-      repo: "your name/your repo",
-      repoId: "your repoId",
-      category: "your category",
-      categoryId: "your categoryId",
+  //     // giscus 配置，官网：https://giscus.app/zh-CN
+  //     repo: "your name/your repo",
+  //     repoId: "your repoId",
+  //     category: "your category",
+  //     categoryId: "your categoryId",
 
-      // artalk 配置，官网：https://artalk.js.org/
-      // server: "your server",
-      // site: "site",
-    },
-  },
+  //     // artalk 配置，官网：https://artalk.js.org/
+  //     // server: "your server",
+  //     // site: "site",
+  //   },
+  // },
   vitePlugins: {
     sidebar: true, // 是否启用 sidebar 插件
     sidebarOption: {}, // sidebar 插件配置项

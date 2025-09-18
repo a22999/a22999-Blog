@@ -100,6 +100,7 @@ export default defineConfig({
     nav: [
       { text: "首页", link: "/" },
       { text: "AI提效", link: "/01.AI提效/01.🛠️ 工具安装/01.软件安装", activeMatch: "/01.AI提效/" },
+      { text: "智能表格", link: "/02.智能表格/01.📊 核心教程/01.产品介绍与界面", activeMatch: "/02.智能表格/" },
       // {
       //   text: "指南",
       //   link: "/guide/intro",
@@ -155,10 +156,10 @@ export default defineConfig({
       },
     },
     // 注释以关闭 "在 GitHub 上编辑此页" 功能
-    editLink: {
-      text: "在 GitHub 上编辑此页",
-      pattern: "https://a22999.github.io/a22999-Blog/edit/master/docs/:path",
-    },
+    // editLink: {
+    //   text: "在 GitHub 上编辑此页",
+    //   pattern: "https://a22999.github.io/a22999-Blog/edit/master/docs/:path",
+    // },
   },
   vite: {
     plugins: [llmstxt() as any],

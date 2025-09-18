@@ -369,53 +369,54 @@ export const teekConfig = defineTeekConfig({
     if (frontmatter.date && Date.now() - new Date(frontmatter.date).getTime() > longTime) return tip;
   },
   // 在每个文章页顶部显示 VitePress 容器添加提示，使用场景如添加文章版权声明。
-  articleBottomTip: frontmatter => {
-    if (typeof window === "undefined") return;
+  // 文章底部注入 作者和文章链接 以及版权信息 版权归属
+  // articleBottomTip: frontmatter => {
+  //   if (typeof window === "undefined") return;
 
-    const hash = false;
-    const query = false;
-    const { origin, pathname, search } = window.location;
-    const url = `${origin}${frontmatter.permalink ?? pathname}${query ? search : ""}${hash ? location.hash : ""}`;
-    const author = "a22999";
+  //   const hash = false;
+  //   const query = false;
+  //   const { origin, pathname, search } = window.location;
+  //   const url = `${origin}${frontmatter.permalink ?? pathname}${query ? search : ""}${hash ? location.hash : ""}`;
+  //   const author = "a22999";
 
-    return {
-      type: "tip",
-      // title: "声明", // 可选
-      text: `<p>作者：${author}</p>
-             <p style="margin-bottom: 0">链接：<a href="${decodeURIComponent(url)}" target="_blank">${decodeURIComponent(url)}</a></p>
-             <p>版权：此文章版权归 ${author} 所有，如有转载，请注明出处!</p>
-            `,
-    };
-  },
+  //   return {
+  //     type: "tip",
+  //     // title: "声明", // 可选
+  //     text: `<p>作者：${author}</p>
+  //            <p style="margin-bottom: 0">链接：<a href="${decodeURIComponent(url)}" target="_blank">${decodeURIComponent(url)}</a></p>
+  //            <p>版权：此文章版权归 ${author} 所有，如有转载，请注明出处!</p>
+  //           `,
+  //   };
+  // },
   // 文章页底部的最近更新栏配置
   articleUpdate: {
     enabled: false, // 是否启用文章最近更新栏
     limit: 3, // 文章最近更新栏显示数量
   },
   // 评论配置，目前内置 Giscus、Twikoo、Waline、Artalk 四种评论插件
-  comment: {
-    provider: "giscus", // 评论区提供者
-    // 评论区配置项，根据 provider 不同而不同，具体看对应官网的使用介绍
-    options: {
-      // twikoo 配置，官网：https://twikoo.js.org/
-      // envId: "your envId",
+  // comment: {
+  //   provider: "giscus", // 评论区提供者
+  //   // 评论区配置项，根据 provider 不同而不同，具体看对应官网的使用介绍
+  //   options: {
+  //     // twikoo 配置，官网：https://twikoo.js.org/
+  //     // envId: "your envId",
 
-      // waline 配置，官网：https://waline.js.org/
-      // serverURL: "your serverURL",
-      // jsLink: "https://unpkg.com/@waline/client@v3/dist/waline.js",
-      // cssLink: "https://unpkg.com/@waline/client@v3/dist/waline.css",
+  //     // waline 配置，官网：https://waline.js.org/
+  //     // serverURL: "your serverURL",
+  //     // jsLink: "https://unpkg.com/@waline/client@v3/dist/waline.js",
+  //     // cssLink: "https://unpkg.com/@waline/client@v3/dist/waline.css",
 
-      // giscus 配置，官网：https://giscus.app/zh-CN
-      repo: "your name/your repo",
-      repoId: "your repoId",
-      category: "your category",
-      categoryId: "your categoryId",
+  //     // giscus 配置，官网：https://giscus.app/zh-CN
+  //     repo: "your name/your repo",
+  //     repoId: "your repoId",
+  //     category: "your category",
+  //     categoryId: "your categoryId",
 
-      // artalk 配置，官网：https://artalk.js.org/
-      // server: "your server",
-      // site: "site",
-    },
-  },
+  //     // artalk 配置，官网：https://artalk.js.org/
+  //     // server: "your server",
+  //     // site: "site",
+  //   },
+  // },
   vitePlugins: {
     sidebar: true, // 是否启用 sidebar 插件
     sidebarOption: {}, // sidebar 插件配置项

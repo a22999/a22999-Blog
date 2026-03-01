@@ -18,7 +18,7 @@ export default defineConfig({
   extends: teekConfig,
   title: "a22999's Blog",
   description: description,
-  base: "/a22999-Blog/", // GitHub Pages 仓库路径
+  base: "/", // Cloudflare Pages 自定义域名
   cleanUrls: true,
   lastUpdated: true,
   lang: "zh-CN",

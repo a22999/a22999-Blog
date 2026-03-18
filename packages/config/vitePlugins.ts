@@ -125,10 +125,19 @@ const registerLoosePlugins = (vitePlugins: Plugins, ignoreDir: Record<string, an
 export const registerTightPlugins = (vitePlugins: Plugins, ignoreDir: Record<string, any[]>) => {
   const plugins: any[] = [];
 
-  const { catalogueOption = {}, fileContentLoaderIgnore = [] } = vitePlugins || {};
+  const { catalogueOption = {}, fileContentLoaderIgnore = [], sidebarOption = {} } = vitePlugins || {};
 
   // 目录页插件
   plugins.push(Catalogue(catalogueOption));
+
+  // 将 sidebarOption.ignoreList 转换为 glob 格式，统一应用到 fileContentLoader
+  const sidebarIgnoreToGlob = (sidebarOption.ignoreList || []).map((item: string) => {
+    // 如果不是 glob 格式，转换为 glob 格式
+    if (!item.includes("*")) {
+      return `**/${item}`;
+    }
+    return item;
+  });
 
   const fileContentLoaderOptions: FileContentLoaderOptions<TkContentData, PostData> = {
     pattern: ["**/*.md"],
@@ -139,7 +148,7 @@ export const registerTightPlugins = (vitePlugins: Plugins, ignoreDir: Record<str
     transformRaw,
     themeConfigKey: "posts",
     globOptions: {
-      ignore: [...ignoreDir.fileContentLoader, ...fileContentLoaderIgnore],
+      ignore: [...ignoreDir.fileContentLoader, ...sidebarIgnoreToGlob, ...fileContentLoaderIgnore],
     },
   };
 

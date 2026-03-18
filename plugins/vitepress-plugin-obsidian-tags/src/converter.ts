@@ -17,10 +17,7 @@ const defaultGenerateTagLink = (tag: string, tagsPagePath: string): string => {
  * @param options 插件配置选项
  * @returns 转换结果
  */
-export const convertTagsToLinks = (
-  content: string,
-  options: ObsidianTagsOptions = {}
-): TagConversionResult => {
+export const convertTagsToLinks = (content: string, options: ObsidianTagsOptions = {}): TagConversionResult => {
   const {
     convertToLinks = false,
     tagsPagePath = "/tags",

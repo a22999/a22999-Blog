@@ -45,9 +45,7 @@ const DEFAULT_IGNORE_DIR = ["**/node_modules/**", "**/dist/**"];
  * })
  * ```
  */
-export default function vitePluginObsidianWikilink(
-  options: ObsidianWikilinkOptions = {}
-): Plugin & { name: string } {
+export default function vitePluginObsidianWikilink(options: ObsidianWikilinkOptions = {}): Plugin & { name: string } {
   const {
     resolveMode = "filePath",
     imageDir = "/attachments",
@@ -59,7 +57,7 @@ export default function vitePluginObsidianWikilink(
     filePattern = "**/*.md",
   } = options;
 
-  let fileIndex: FileIndex = new Map();
+  const fileIndex: FileIndex = new Map();
   let srcDir: string;
   let rewrites: Record<string, string>;
   let cleanUrls: boolean;
@@ -70,9 +68,7 @@ export default function vitePluginObsidianWikilink(
    */
   const shouldIgnore = (filePath: string): boolean => {
     return ignoreList.some(
-      item =>
-        (typeof item === "string" && filePath.includes(item)) ||
-        (item instanceof RegExp && item.test(filePath))
+      item => (typeof item === "string" && filePath.includes(item)) || (item instanceof RegExp && item.test(filePath))
     );
   };
 

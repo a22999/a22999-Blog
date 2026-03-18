@@ -70,7 +70,7 @@ const isValidTagChar = (char: string): boolean => {
  */
 const extractSingleTag = (content: string, position: number): { tag: string; endPosition: number } | null => {
   // 跳过 # 号
-  let tagStart = position + 1;
+  const tagStart = position + 1;
   let tagEnd = tagStart;
 
   // 检查第一个字符是否有效

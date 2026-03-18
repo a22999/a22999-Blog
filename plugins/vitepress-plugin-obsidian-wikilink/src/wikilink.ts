@@ -46,7 +46,10 @@ export function headingToAnchor(heading: string): string {
  * - ![[image.png]] -> 嵌入图片
  * - ![[filename]] -> 嵌入文件（转换为普通链接）
  */
-export function parseWikilink(text: string, imageExtensions: string[] = DEFAULT_IMAGE_EXTENSIONS): ParsedWikilink | null {
+export function parseWikilink(
+  text: string,
+  imageExtensions: string[] = DEFAULT_IMAGE_EXTENSIONS
+): ParsedWikilink | null {
   // Wikilink 正则表达式
   // 匹配: !?[[...]]
   const wikilinkRegex = /^(!?)\[\[([^\]]+)\]\]$/;
@@ -111,11 +114,7 @@ export function parseWikilink(text: string, imageExtensions: string[] = DEFAULT_
 /**
  * 构建 Markdown 链接
  */
-export function buildMarkdownLink(
-  parsed: ParsedWikilink,
-  targetUrl: string,
-  options: ObsidianWikilinkOptions
-): string {
+export function buildMarkdownLink(parsed: ParsedWikilink, targetUrl: string, options: ObsidianWikilinkOptions): string {
   const { displayText, heading } = parsed;
 
   // 构建完整 URL
@@ -151,10 +150,7 @@ export function buildMarkdownLink(
 /**
  * 处理未找到文件的情况
  */
-export function handleNotFound(
-  parsed: ParsedWikilink,
-  options: ObsidianWikilinkOptions
-): string {
+export function handleNotFound(parsed: ParsedWikilink, options: ObsidianWikilinkOptions): string {
   const { onNotFound = "keep", placeholderTemplate = "[未找到: {filename}]" } = options;
 
   switch (onNotFound) {
@@ -171,11 +167,7 @@ export function handleNotFound(
 /**
  * 根据解析模式获取目标 URL
  */
-export function resolveTargetUrl(
-  fileInfo: FileInfo,
-  mode: ResolveMode,
-  currentFilePath: string
-): string {
+export function resolveTargetUrl(fileInfo: FileInfo, mode: ResolveMode, currentFilePath: string): string {
   switch (mode) {
     case "permalink":
       return fileInfo.permalink || fileInfo.url;
@@ -190,11 +182,7 @@ export function resolveTargetUrl(
 /**
  * 在文件索引中查找文件
  */
-export function findFile(
-  filename: string,
-  fileIndex: FileIndex,
-  currentFilePath?: string
-): FileInfo | undefined {
+export function findFile(filename: string, fileIndex: FileIndex, currentFilePath?: string): FileInfo | undefined {
   // 直接查找
   const direct = fileIndex.get(filename.toLowerCase());
   if (direct) return direct;
@@ -212,10 +200,7 @@ export function findFile(
 /**
  * 解析当前文件内的锚点链接
  */
-export function resolveAnchorLink(
-  parsed: ParsedWikilink,
-  options: ObsidianWikilinkOptions
-): string {
+export function resolveAnchorLink(parsed: ParsedWikilink, options: ObsidianWikilinkOptions): string {
   if (!parsed.isAnchorOnly || !parsed.heading) {
     return parsed.raw;
   }

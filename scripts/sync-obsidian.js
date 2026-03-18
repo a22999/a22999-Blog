@@ -4,9 +4,9 @@
  * 将 Obsidian 仓库中的笔记同步到博客 docs 目录
  */
 
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -14,19 +14,19 @@ const __dirname = path.dirname(__filename);
 // 配置
 const config = {
   // Obsidian 目录（在项目内的 obsidian 目录）
-  obsidianDir: path.resolve(__dirname, '../obsidian'),
+  obsidianDir: path.resolve(__dirname, "../obsidian"),
   // 博客 docs 目录
-  blogDocsDir: path.resolve(__dirname, '../docs'),
+  blogDocsDir: path.resolve(__dirname, "../docs"),
   // 同步映射：Obsidian 目录 -> 博客目录
   syncMappings: [
-    { src: '笔记', dest: '01.AI提效' },
+    { src: "笔记", dest: "01.AI提效" },
     // 可以添加更多映射
     // { src: '其他笔记', dest: '02.其他分类' },
   ],
   // 图片目录同步
   attachmentsMapping: {
-    src: '附件',
-    dest: 'public/attachments',
+    src: "附件",
+    dest: "public/attachments",
   },
 };
 
@@ -108,7 +108,7 @@ function cleanDestDir(src, dest, options = {}) {
  * 主函数
  */
 function main() {
-  console.log('🔄 开始同步 Obsidian 笔记...\n');
+  console.log("🔄 开始同步 Obsidian 笔记...\n");
 
   // 同步笔记目录
   for (const mapping of config.syncMappings) {
@@ -117,8 +117,8 @@ function main() {
 
     console.log(`📁 同步: ${mapping.src} -> ${mapping.dest}`);
 
-    if (copyDir(srcPath, destPath, { ignore: ['.obsidian'] })) {
-      cleanDestDir(srcPath, destPath, { ignore: ['.obsidian'] });
+    if (copyDir(srcPath, destPath, { ignore: [".obsidian"] })) {
+      cleanDestDir(srcPath, destPath, { ignore: [".obsidian"] });
     }
   }
 
@@ -136,7 +136,7 @@ function main() {
     }
   }
 
-  console.log('\n✨ 同步完成！');
+  console.log("\n✨ 同步完成！");
 }
 
 // 执行

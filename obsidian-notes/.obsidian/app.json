@@ -1,0 +1,11 @@
+{
+  "attachmentFolderPath": "attachments",
+  "newFileLocation": "folder",
+  "newFileFolderPath": "01.AI提效",
+  "useMarkdownLinks": false,
+  "showInlineTitle": true,
+  "showLineNumber": true,
+  "readableLineLength": true,
+  "livePreview": true,
+  "strictLineBreaks": true
+}

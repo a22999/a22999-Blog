@@ -30,8 +30,6 @@ coverage
 
 /**/.vitepress/cache/*
 
-# Obsidian workspace files (keep config, ignore workspace state)
-docs/.obsidian/workspace.json
-docs/.obsidian/workspace-mobile.json
-docs/.obsidian/graph.json
-docs/.obsidian/cache
+# Obsidian notes (symlink to obsidian-notes/)
+# 软链接目录不提交，源文件在 obsidian-notes/ 中管理
+docs/01.AI提效/

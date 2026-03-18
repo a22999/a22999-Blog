@@ -33,6 +33,9 @@
   "peerDependencies": {
     "vitepress": "catalog:"
   },
+  "dependencies": {
+    "@teek/types": "workspace:*"
+  },
   "browserslist": [
     "> 1%",
     "not ie 11",

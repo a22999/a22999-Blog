@@ -1,4 +1,4 @@
-import type { Message } from "@teek/components/common/Message/src/message";
+import type { Message } from "@teek/types";
 
 export interface CodeBlock {
   /**

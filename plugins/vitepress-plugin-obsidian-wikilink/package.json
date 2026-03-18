@@ -1,0 +1,55 @@
+{
+  "name": "vitepress-plugin-obsidian-wikilink",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "将 Obsidian 的 Wikilinks 语法转换为标准 Markdown 链接",
+  "author": {
+    "name": "teeker",
+    "email": "2456019588@qq.com",
+    "url": "https://vp.teek.top"
+  },
+  "keywords": [
+    "vitepress",
+    "vite",
+    "plugin",
+    "obsidian",
+    "wikilink",
+    "markdown"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/Kele-Bingtang/vitepress-theme-teek/tree/master/plugins/vitepress-plugin-obsidian-wikilink",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kele-Bingtang/vitepress-theme-teek.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Kele-Bingtang/vitepress-theme-teek/issues"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "package.json"
+  ],
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "scripts": {
+    "stub": "unbuild --stub",
+    "build": "unbuild"
+  },
+  "dependencies": {
+    "gray-matter": "catalog:",
+    "tinyglobby": "catalog:",
+    "vitepress-plugin-shared": "workspace:*"
+  },
+  "devDependencies": {
+    "vite": "catalog:"
+  }
+}

@@ -1,4 +1,4 @@
-import type { TkAvatarProps } from "@teek/components/common/Avatar";
+import type { AvatarProps } from "@teek/types";
 
 export interface Blogger {
   /**
@@ -18,7 +18,7 @@ export interface Blogger {
    *
    * @default 'square'
    */
-  shape?: TkAvatarProps["shape"] | "circle-rotate" | "circle-rotate-last";
+  shape?: AvatarProps["shape"] | "circle-rotate" | "circle-rotate-last";
   /**
    * 背景图片地址，仅当 shape 为 circle 相关值时有效
    *
@@ -38,7 +38,7 @@ export interface Blogger {
    * @default 100
    * @since v1.4.6
    */
-  circleSize?: TkAvatarProps["size"];
+  circleSize?: AvatarProps["size"];
   /**
    * 字体颜色
    *
@@ -60,7 +60,7 @@ export interface Blogger {
      *
      * @default 24
      */
-    size?: TkAvatarProps["size"];
+    size?: AvatarProps["size"];
     /**
      * 鼠标悬停图标的提示语
      */

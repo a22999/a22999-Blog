@@ -65,7 +65,7 @@
   },
   "dependencies": {
     "gray-matter": "catalog:",
-    "picocolors": "catalog:"
+    "vitepress-plugin-shared": "workspace:*"
   },
   "devDependencies": {
     "@types/fs-extra": "^11.0.4",

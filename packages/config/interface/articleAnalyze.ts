@@ -1,4 +1,4 @@
-import type { ImageViewerProps } from "@teek/components/common/ImageViewer/src/imageViewer";
+import type { ImageViewerProps } from "@teek/types";
 
 export type ArticleInfoPosition = "post" | "article";
 

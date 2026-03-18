@@ -4,6 +4,7 @@ import type { Plugin } from "vite";
 import { readFileSync } from "node:fs";
 import { basename } from "node:path";
 import matter from "gray-matter";
+import { getMdFileTitle } from "vitepress-plugin-shared";
 import { MdH1Option } from "./types";
 
 export * from "./types";
@@ -93,27 +94,6 @@ export default function VitePluginVitePressMdH1(option: MdH1Option = {}): Plugin
     },
   };
 }
-
-/**
- * 获取实际的文件名
- *
- * @param filename 文件名
- */
-export const getMdFileTitle = (filename: string) => {
-  let title = "";
-  // 如果文件名带序号，如【1.xx.md】，则取 xx
-  const fileNameArr = filename.split(".");
-
-  if (fileNameArr.length === 2) title = fileNameArr[0];
-  else {
-    // 处理多个 . 如 01.guile.md 的情况
-    const firstDotIndex = filename.indexOf(".");
-    const lastDotIndex = filename.lastIndexOf(".");
-    title = filename.substring(firstDotIndex + 1, lastDotIndex);
-  }
-
-  return title;
-};
 
 /**
  * 格式化字符串

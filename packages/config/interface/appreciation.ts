@@ -1,4 +1,4 @@
-import type { IconProps } from "@teek/components/common/Icon/src/icon";
+import type { IconProps } from "@teek/types";
 
 export type Appreciation<T extends keyof AppreciationPosition = ""> = {
   /**

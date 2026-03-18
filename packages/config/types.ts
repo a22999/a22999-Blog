@@ -1,6 +1,5 @@
 import type { PageData } from "vitepress";
-import type { VpContainerProps } from "@teek/components/common/VpContainer/src/vpContainer";
-import type { TkPaginationProps } from "../components/common/Pagination";
+import type { TkPaginationProps, VpContainerProps } from "@teek/types";
 import type {
   Appreciation,
   ArticleAnalyze,

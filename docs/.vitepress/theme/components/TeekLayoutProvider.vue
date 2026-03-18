@@ -61,9 +61,10 @@ const handleConfigSwitch = (config: TeekConfig, style: string) => {
       </div>
     </template>
 
-    <template #nav-screen-content-after>
+    <!-- 移动端配置切换已禁用 -->
+    <!-- <template #nav-screen-content-after>
       <ConfigSwitch v-model="currentStyle" @switch="handleConfigSwitch" />
-    </template>
+    </template> -->
 
     <template #teek-archives-top-before>
       <ContributeChart />

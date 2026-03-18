@@ -5,6 +5,7 @@ import { glob } from "tinyglobby";
 import matter from "gray-matter";
 import { readFileSync, statSync, writeFileSync } from "node:fs";
 import { formatDate } from "./util";
+import { getMdFileTitle } from "vitepress-plugin-shared";
 import logger from "./log";
 
 export * from "./types";
@@ -125,27 +126,6 @@ export const checkExcludeAndInclude = (
   }
 
   return true;
-};
-
-/**
- * 获取实际的文件名
- *
- * @param filename 文件名
- */
-export const getMdFileTitle = (filename: string) => {
-  let title = "";
-  // 如果文件名带序号，如【1.xx.md】，则取 xx
-  const fileNameArr = filename.split(".");
-
-  if (fileNameArr.length === 2) title = fileNameArr[0];
-  else {
-    // 处理多个 . 如 01.guile.md 的情况
-    const firstDotIndex = filename.indexOf(".");
-    const lastDotIndex = filename.lastIndexOf(".");
-    title = filename.substring(firstDotIndex + 1, lastDotIndex);
-  }
-
-  return title;
 };
 
 /**

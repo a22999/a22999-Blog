@@ -43,7 +43,8 @@
     "build": "unbuild"
   },
   "dependencies": {
-    "gray-matter": "catalog:"
+    "gray-matter": "catalog:",
+    "vitepress-plugin-shared": "workspace:*"
   },
   "devDependencies": {
     "vite": "catalog:"

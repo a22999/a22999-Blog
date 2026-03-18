@@ -60,35 +60,22 @@ export const teekConfig = defineTeekConfig({
     mask: false, // body 背景图遮罩
     maskBg: "rgba(0, 0, 0, 0.2)", // body 背景图遮罩颜色，如果为数字，则是 rgba(0, 0, 0, ${maskBg})，如果为字符串，则作为背景色。mask 为 true 时生效
   },
-  // 主题增强配置，当开启后，右上角将有主题增强面板出现。
+  // 主题增强配置（允许用户调整布局、主题色、聚光灯等样式）
   themeEnhance: {
-    enabled: true, // 启用主题增强功能
-    position: "top", // 位置，top 为导航栏右侧，bottom 为右下角
-    // 布局切换配置
+    enabled: true,
+    position: "top",
     layoutSwitch: {
-      disabled: false, // 禁用布局切换
-      defaultMode: "original", // 布局切换的默认模式
-      disableHelp: false, // 禁用帮助提示
-      disableAnimation: false, // 禁用布局切换动画
-      defaultDocMaxWidth: 90, // 内容布局最大宽度的默认百分比，仅限 0-100
-      disableDocMaxWidthHelp: false, // 禁用帮助提示
-      defaultPageMaxWidth: 95, // 页面布局最大宽度的默认百分比，仅限 0-100
-      disablePageMaxWidthHelp: false, // 禁用帮助提示
+      disabled: false,
+      defaultMode: "original",
     },
-    // 布局主题色配置
     themeColor: {
-      disabled: false, // 禁用布局主题色切换
-      defaultColorName: "vp-default", // 布局默认主题色
-      defaultSpread: false, // 是否将主题色扩散到其他元素（根据主题色计算其他元素需要的颜色）
-      disableHelp: false, // 禁用帮助提示
-      disabledInMobile: false, // 是否在移动端禁用
+      disabled: false,
+      defaultColorName: "vp-default",
     },
-    // 聚光灯配置
     spotlight: {
-      disabled: false, // 禁用聚光灯
-      defaultStyle: "aside", //  聚光灯默认样式
-      disableHelp: false, // 禁用帮助提示
-      defaultValue: true, // 聚光灯默认开关状态
+      disabled: false,
+      defaultStyle: "aside",
+      defaultValue: true,
     },
   },
   // 文章默认的作者信息
@@ -110,11 +97,7 @@ export const teekConfig = defineTeekConfig({
     // ...
   },
   // 站点分析配置
-  // siteAnalytics: [
-  //   { provider: "google", options: { id: "G-XXXXXXXXXX" } }, // 请替换为真实的Google Analytics ID
-  //   { provider: "baidu", options: { id: "your-baidu-id" } }, // 请替换为真实的百度统计ID
-  //   { provider: "umami", options: { id: "your-umami-id", src: "your-umami-src" } }, // 请替换为真实的Umami配置
-  // ],
+  siteAnalytics: [{ provider: "google", options: { id: "G-9JSG62WP5E" } }],
   // 首页 Banner 配置，位于首页顶部
   banner: {
     enabled: true, // 是否启用 Banner
@@ -393,33 +376,21 @@ export const teekConfig = defineTeekConfig({
     enabled: false, // 是否启用文章最近更新栏
     limit: 3, // 文章最近更新栏显示数量
   },
-  // 评论配置，目前内置 Giscus、Twikoo、Waline、Artalk 四种评论插件
-  // comment: {
-  //   provider: "giscus", // 评论区提供者
-  //   // 评论区配置项，根据 provider 不同而不同，具体看对应官网的使用介绍
-  //   options: {
-  //     // twikoo 配置，官网：https://twikoo.js.org/
-  //     // envId: "your envId",
-
-  //     // waline 配置，官网：https://waline.js.org/
-  //     // serverURL: "your serverURL",
-  //     // jsLink: "https://unpkg.com/@waline/client@v3/dist/waline.js",
-  //     // cssLink: "https://unpkg.com/@waline/client@v3/dist/waline.css",
-
-  //     // giscus 配置，官网：https://giscus.app/zh-CN
-  //     repo: "your name/your repo",
-  //     repoId: "your repoId",
-  //     category: "your category",
-  //     categoryId: "your categoryId",
-
-  //     // artalk 配置，官网：https://artalk.js.org/
-  //     // server: "your server",
-  //     // site: "site",
-  //   },
-  // },
+  // 评论配置
+  comment: {
+    provider: "giscus",
+    options: {
+      repo: "a22999/a22999-Blog",
+      repoId: "R_kgDOPuCg2A",
+      category: "Announcements",
+      categoryId: "DIC_kwDOPuCg2M4C4po_",
+    },
+  },
   vitePlugins: {
     sidebar: true, // 是否启用 sidebar 插件
-    sidebarOption: {}, // sidebar 插件配置项
+    sidebarOption: {
+      ignoreList: ["归档(无用)"], // 忽略归档目录
+    }, // sidebar 插件配置项
     permalink: true, // 是否启用 permalink 插件
     permalinkOption: {}, // permalinks 插件配置项
     mdH1: true, // 是否启用 mdH1 插件
@@ -433,6 +404,7 @@ export const teekConfig = defineTeekConfig({
       "**/20.资源/**",
       "**/30.生态/**",
       "**/examples/**",
+      "**/归档(无用)/**",
     ], // fileContentLoader 插件扫描 markdown 文档时，指定忽略路径，格式为 glob 表达式，如 **/test/**
     autoFrontmatter: true, // 是否启用 autoFrontmatter 插件
     // autoFrontmatter 插件配置项

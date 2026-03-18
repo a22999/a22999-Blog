@@ -1,17 +1,5 @@
-import { defineBuildConfig } from "unbuild";
+import { createPluginBuildConfig, vitepressExternals } from "../../../build/plugin-build";
 
-export default defineBuildConfig({
-  entries: ["src/index"],
-  clean: true,
-  declaration: true,
-  rollup: {
-    emitCJS: true,
-    output: {
-      exports: "named",
-    },
-    esbuild: {
-      minify: true,
-    },
-  },
-  externals: ["vitepress", "vite"],
+export default createPluginBuildConfig({
+  externals: vitepressExternals,
 });

@@ -4,6 +4,7 @@
   "license": "MIT",
   "main": "index.ts",
   "dependencies": {
+    "@teek/types": "workspace:*",
     "gray-matter": "catalog:",
     "vitepress": "catalog:",
     "vitepress-plugin-auto-frontmatter": "catalog:",

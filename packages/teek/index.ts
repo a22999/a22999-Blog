@@ -25,6 +25,7 @@ import "@teek/static/iconfont/social/iconfont.css";
 export type DefaultThemeType = typeof DefaultTheme;
 export type * from "@teek/config";
 
+export * from "@teek/types";
 export * from "@teek/static";
 export * from "@teek/components";
 export * from "@teek/helper";

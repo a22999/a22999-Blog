@@ -1,5 +1,5 @@
 import type { Route } from "vitepress";
-import type { IconProps } from "@teek/components/common/Icon/src/icon";
+import type { IconProps } from "@teek/types";
 
 export interface Notice {
   /**

@@ -5,6 +5,6 @@ export default Icon;
 
 export type { IconProps as TkIconProps } from "./src/icon";
 export * from "./src/instance";
-export * from "./src/SocialIcons"
+export * from "./src/SocialIcons";
 
 export { addCollection as addIcons } from "@iconify/vue";

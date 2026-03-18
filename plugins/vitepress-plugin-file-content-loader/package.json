@@ -44,8 +44,8 @@
   },
   "dependencies": {
     "gray-matter": "catalog:",
-    "picocolors": "catalog:",
-    "tinyglobby": "catalog:"
+    "tinyglobby": "catalog:",
+    "vitepress-plugin-shared": "workspace:*"
   },
   "devDependencies": {
     "vite": "catalog:",

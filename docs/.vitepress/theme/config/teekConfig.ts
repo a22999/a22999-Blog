@@ -158,10 +158,34 @@ export const teekBlogBodyConfig: TeekConfig = {
     descStyle: "types", // 描述样式类型
   },
   themeEnhance: {
+    enabled: true,
+    position: "top",
     layoutSwitch: {
+      disabled: false,
       defaultMode: "original",
     },
+    themeColor: {
+      disabled: false,
+      defaultColorName: "vp-default",
+    },
+    spotlight: {
+      disabled: false,
+      defaultStyle: "aside",
+      defaultValue: true,
+    },
   },
+  // 评论配置
+  comment: {
+    provider: "giscus",
+    options: {
+      repo: "a22999/a22999-Blog",
+      repoId: "R_kgDOPuCg2A",
+      category: "Announcements",
+      categoryId: "DIC_kwDOPuCg2M4C4po_",
+    },
+  },
+  // Google Analytics 配置
+  siteAnalytics: [{ provider: "google", options: { id: "G-9JSG62WP5E" } }],
 };
 
 // 博客卡片配置

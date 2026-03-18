@@ -389,7 +389,7 @@ export const teekConfig = defineTeekConfig({
   vitePlugins: {
     sidebar: true, // 是否启用 sidebar 插件
     sidebarOption: {
-      ignoreList: ["归档(无用)"], // 忽略归档目录
+      ignoreList: ["归档(无用)", "OBSIDIAN_GUIDE.md"], // 忽略归档目录和 Obsidian 管理规范文档
     }, // sidebar 插件配置项
     permalink: true, // 是否启用 permalink 插件
     permalinkOption: {}, // permalinks 插件配置项
@@ -405,6 +405,7 @@ export const teekConfig = defineTeekConfig({
       "**/30.生态/**",
       "**/examples/**",
       "**/归档(无用)/**",
+      "**/OBSIDIAN_GUIDE.md", // 隐藏 Obsidian 管理规范文档
     ], // fileContentLoader 插件扫描 markdown 文档时，指定忽略路径，格式为 glob 表达式，如 **/test/**
     autoFrontmatter: true, // 是否启用 autoFrontmatter 插件
     // autoFrontmatter 插件配置项

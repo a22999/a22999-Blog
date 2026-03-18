@@ -2,9 +2,11 @@
 date: 2026-03-18 11:14:13
 title: OBSIDIAN_GUIDE
 permalink: /ae613b
+published: false
 categories:
-  - 
+  -
 ---
+
 # Obsidian 文章管理规范
 
 > 本文档定义了使用 Obsidian 管理博客文章的规范和规则
@@ -46,17 +48,17 @@ a22999-Blog/                       # 博客项目根目录
 
 ### 2.1 文件命名格式
 
-| 格式 | 示例 | 说明 |
-|------|------|------|
-| `标题.md` | `软件安装指南.md` | 推荐格式，标题即文件名 |
-| `序号.标题.md` | `01.软件安装指南.md` | 带序号，用于排序 |
-| `序号_标题.md` | `01_软件安装指南.md` | 下划线分隔 |
+| 格式           | 示例                 | 说明                   |
+| -------------- | -------------------- | ---------------------- |
+| `标题.md`      | `软件安装指南.md`    | 推荐格式，标题即文件名 |
+| `序号.标题.md` | `01.软件安装指南.md` | 带序号，用于排序       |
+| `序号_标题.md` | `01_软件安装指南.md` | 下划线分隔             |
 
 ### 2.2 目录命名格式
 
-| 格式 | 示例 | 说明 |
-|------|------|------|
-| `分类名/` | `工具安装/` | 简单分类 |
+| 格式           | 示例           | 说明       |
+| -------------- | -------------- | ---------- |
+| `分类名/`      | `工具安装/`    | 简单分类   |
 | `序号.分类名/` | `01.工具安装/` | 带序号分类 |
 
 ---
@@ -68,24 +70,24 @@ a22999-Blog/                       # 博客项目根目录
 ```yaml
 ---
 # === 必填字段 ===
-title: 文章标题                      # 文章标题
-tags: [tag1, tag2, tag3]            # 标签（Obsidian 格式）
+title: 文章标题 # 文章标题
+tags: [tag1, tag2, tag3] # 标签（Obsidian 格式）
 
 # === 自动生成字段 ===
-date: 2025-03-18                    # 创建日期（自动生成）
-updated: 2025-03-18 12:00:00        # 更新时间（自动生成）
+date: 2025-03-18 # 创建日期（自动生成）
+updated: 2025-03-18 12:00:00 # 更新时间（自动生成）
 
 # === 可选字段 ===
-aliases: [别名1, 别名2]              # Obsidian 别名
-categories:                         # 分类层级
+aliases: [别名1, 别名2] # Obsidian 别名
+categories: # 分类层级
   - 一级分类
   - 二级分类
-permalink: /custom/url/path         # 永久链接
-coverImg: /attachments/cover.png    # 封面图
-sticky: 0                           # 置顶权重（数字越小越靠前）
-titleTag: 标签                      # 标题标签
-description: 文章描述               # SEO 描述
-publish: true                       # 是否发布（false 为草稿）
+permalink: /custom/url/path # 永久链接
+coverImg: /attachments/cover.png # 封面图
+sticky: 0 # 置顶权重（数字越小越靠前）
+titleTag: 标签 # 标题标签
+description: 文章描述 # SEO 描述
+publish: true # 是否发布（false 为草稿）
 ---
 ```
 
@@ -97,8 +99,8 @@ title: AI提效
 date: 2025-03-18
 permalink: /ai-efficiency
 layout: page
-catalogue: true                      # 标识为目录页
-path: AI提效                         # 扫描路径
+catalogue: true # 标识为目录页
+path: AI提效 # 扫描路径
 desc: AI时代下的工作效率革命
 sidebar: false
 article: false
@@ -109,18 +111,18 @@ categories:
 
 ### 3.3 字段说明
 
-| 字段 | 类型 | 必填 | 说明 |
-|------|------|------|------|
-| `title` | string | ✅ | 文章标题，默认使用文件名 |
-| `tags` | string[] | ✅ | 标签数组，支持从正文 `#tag` 自动提取 |
-| `date` | string | 自动 | 创建时间，格式 `YYYY-MM-DD` 或 `YYYY-MM-DD HH:mm:ss` |
-| `updated` | string | 自动 | 更新时间 |
-| `categories` | string[] | 可选 | 分类层级，默认从目录路径提取 |
-| `permalink` | string | 可选 | 永久链接，不设置则自动生成 |
-| `coverImg` | string | 可选 | 封面图片路径 |
-| `sticky` | number | 可选 | 置顶权重，0 为不置顶 |
-| `publish` | boolean | 可选 | 是否发布，默认 `true` |
-| `aliases` | string[] | 可选 | Obsidian 别名，用于 Wikilinks |
+| 字段         | 类型     | 必填 | 说明                                                 |
+| ------------ | -------- | ---- | ---------------------------------------------------- |
+| `title`      | string   | ✅   | 文章标题，默认使用文件名                             |
+| `tags`       | string[] | ✅   | 标签数组，支持从正文 `#tag` 自动提取                 |
+| `date`       | string   | 自动 | 创建时间，格式 `YYYY-MM-DD` 或 `YYYY-MM-DD HH:mm:ss` |
+| `updated`    | string   | 自动 | 更新时间                                             |
+| `categories` | string[] | 可选 | 分类层级，默认从目录路径提取                         |
+| `permalink`  | string   | 可选 | 永久链接，不设置则自动生成                           |
+| `coverImg`   | string   | 可选 | 封面图片路径                                         |
+| `sticky`     | number   | 可选 | 置顶权重，0 为不置顶                                 |
+| `publish`    | boolean  | 可选 | 是否发布，默认 `true`                                |
+| `aliases`    | string[] | 可选 | Obsidian 别名，用于 Wikilinks                        |
 
 ---
 
@@ -128,14 +130,14 @@ categories:
 
 ### 4.1 支持的语法
 
-| 语法 | 转换后 | 说明 |
-|------|--------|------|
-| `[[文件名]]` | `[文件名](/path/to/file)` | 基本链接 |
-| `[[文件名\|显示文本]]` | `[显示文本](/path/to/file)` | 自定义显示文本 |
-| `[[文件名#标题]]` | `[文件名#标题](/path/to/file#标题)` | 链接到特定标题 |
-| `[[#标题]]` | `[标题](#标题)` | 当前文件内锚点 |
-| `![[图片.png]]` | `![图片](/attachments/图片.png)` | 嵌入图片 |
-| `[[attachments/图片.png]]` | `![图片](/attachments/图片.png)` | 图片链接 |
+| 语法                       | 转换后                              | 说明           |
+| -------------------------- | ----------------------------------- | -------------- |
+| `[[文件名]]`               | `[文件名](/path/to/file)`           | 基本链接       |
+| `[[文件名\|显示文本]]`     | `[显示文本](/path/to/file)`         | 自定义显示文本 |
+| `[[文件名#标题]]`          | `[文件名#标题](/path/to/file#标题)` | 链接到特定标题 |
+| `[[#标题]]`                | `[标题](#标题)`                     | 当前文件内锚点 |
+| `![[图片.png]]`            | `![图片](/attachments/图片.png)`    | 嵌入图片       |
+| `[[attachments/图片.png]]` | `![图片](/attachments/图片.png)`    | 图片链接       |
 
 ### 4.2 使用示例
 
@@ -161,18 +163,22 @@ categories:
 
 ```markdown
 # 英文标签
+
 #obsidian #blog #markdown
 
 # 中文标签
+
 #笔记 #教程 #分享
 
 # 带分隔符的标签
+
 #vue-js #前端开发 #type_script
 ```
 
 ### 5.2 标签位置
 
 1. **Frontmatter 中定义**（推荐）:
+
 ```yaml
 ---
 tags: [obsidian, blog, markdown]
@@ -180,6 +186,7 @@ tags: [obsidian, blog, markdown]
 ```
 
 2. **正文中使用**:
+
 ```markdown
 这是一个关于 #obsidian 的笔记。
 ```
@@ -212,12 +219,15 @@ tags: [obsidian, blog, markdown]
 
 ```markdown
 # 方式一：标准 Markdown 语法
+
 ![描述](attachments/AI提效/software-setup.png)
 
 # 方式二：Obsidian 语法（自动转换）
+
 ![[software-setup.png]]
 
 # 方式三：Wikilinks
+
 [[attachments/AI提效/software-setup.png]]
 ```
 
@@ -267,7 +277,7 @@ syncMappings: [
 
 ```yaml
 ---
-publish: false    # 设置为 false 不发布
+publish: false # 设置为 false 不发布
 ---
 ```
 
@@ -285,9 +295,9 @@ export default defineTeekConfig({
     // Obsidian Wikilinks 插件
     obsidianWikilink: true,
     obsidianWikilinkOption: {
-      resolveMode: 'filePath',
-      imageDir: '/attachments',
-      onNotFound: 'keep'
+      resolveMode: "filePath",
+      imageDir: "/attachments",
+      onNotFound: "keep",
     },
 
     // Obsidian 标签插件
@@ -296,7 +306,7 @@ export default defineTeekConfig({
       extractInlineTags: true,
       mergeToFrontmatter: true,
       convertToLinks: false,
-      tagsPagePath: '/tags'
+      tagsPagePath: "/tags",
     },
 
     // 自动 frontmatter 插件
@@ -304,8 +314,8 @@ export default defineTeekConfig({
     autoFrontmatterOption: {
       permalinkPrefix: "",
       categories: true,
-    }
-  }
+    },
+  },
 });
 ```
 
@@ -334,17 +344,17 @@ export default defineTeekConfig({
 ### 10.1 常用 Frontmatter 模板
 
 **技术文章模板**:
+
 ```yaml
 ---
 title:
-tags: [技术, ]
+tags: [技术]
 categories:
   - 编程笔记
   - 前端
 description:
 publish: true
 ---
-
 # {{title}}
 
 ## 概述
@@ -355,6 +365,7 @@ publish: true
 ```
 
 **工具推荐模板**:
+
 ```yaml
 ---
 title:
@@ -364,7 +375,6 @@ categories:
 coverImg:
 description:
 ---
-
 # {{title}}
 
 ## 工具简介

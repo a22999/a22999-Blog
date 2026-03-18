@@ -131,13 +131,15 @@ export const registerTightPlugins = (vitePlugins: Plugins, ignoreDir: Record<str
   plugins.push(Catalogue(catalogueOption));
 
   // 将 sidebarOption.ignoreList 转换为 glob 格式，统一应用到 fileContentLoader
-  const sidebarIgnoreToGlob = (sidebarOption.ignoreList || []).map((item: string) => {
-    // 如果不是 glob 格式，转换为 glob 格式
-    if (!item.includes("*")) {
-      return `**/${item}`;
-    }
-    return item;
-  });
+  const sidebarIgnoreToGlob = (sidebarOption.ignoreList || [])
+    .filter((item: string | RegExp) => typeof item === "string") // 只处理字符串，过滤掉正则表达式
+    .map((item: string) => {
+      // 如果不是 glob 格式，转换为 glob 格式
+      if (!item.includes("*")) {
+        return `**/${item}`;
+      }
+      return item;
+    });
 
   const fileContentLoaderOptions: FileContentLoaderOptions<TkContentData, PostData> = {
     pattern: ["**/*.md"],

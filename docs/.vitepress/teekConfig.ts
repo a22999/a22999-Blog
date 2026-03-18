@@ -389,7 +389,7 @@ export const teekConfig = defineTeekConfig({
   vitePlugins: {
     sidebar: true, // 是否启用 sidebar 插件
     sidebarOption: {
-      ignoreList: ["归档(无用)", "OBSIDIAN_GUIDE.md"], // 忽略归档目录和 Obsidian 管理规范文档（自动应用到文章列表和侧边栏）
+      ignoreList: ["归档(无用)", "OBSIDIAN_GUIDE.md", /^obsidian$/], // 忽略归档目录、Obsidian 管理规范文档、以及顶层 obsidian 目录名
     }, // sidebar 插件配置项
     permalink: true, // 是否启用 permalink 插件
     permalinkOption: {}, // permalinks 插件配置项

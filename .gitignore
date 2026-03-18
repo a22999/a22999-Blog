@@ -31,7 +31,7 @@ coverage
 /**/.vitepress/cache/*
 
 # Obsidian workspace files (keep config, ignore workspace state)
-obsidian/.obsidian/workspace.json
-obsidian/.obsidian/workspace-mobile.json
-obsidian/.obsidian/graph.json
-obsidian/.obsidian/cache
+docs/.obsidian/workspace.json
+docs/.obsidian/workspace-mobile.json
+docs/.obsidian/graph.json
+docs/.obsidian/cache

@@ -33,3 +33,4 @@ coverage
 # Obsidian notes (symlink to obsidian-notes/)
 # 软链接目录不提交，源文件在 obsidian-notes/ 中管理
 docs/01.AI提效/
+docs/public/imgs/

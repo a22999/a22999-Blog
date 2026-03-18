@@ -99,7 +99,7 @@ export default defineConfig({
     },
     nav: [
       { text: "首页", link: "/" },
-      { text: "AI提效", link: "/01.AI提效/01.🛠️ 工具安装/01.软件安装", activeMatch: "/01.AI提效/" },
+      { text: "AI提效", link: "/obsidian/01.AI提效/01.🛠️ 工具安装/01.软件安装", activeMatch: "/obsidian/01.AI提效/" },
       // {
       //   text: "指南",
       //   link: "/guide/intro",

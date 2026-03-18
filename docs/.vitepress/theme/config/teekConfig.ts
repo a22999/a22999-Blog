@@ -142,6 +142,9 @@ export const teekBlogFullConfig: TeekConfig = {
 // 博客全图配置
 export const teekBlogBodyConfig: TeekConfig = {
   ...teekBlogCommonConfig,
+  post: {
+    postStyle: "list", // 文章列表样式
+  },
   pageStyle: "segment-nav",
   // 此处配置背景图片 - 设置页面背景图片数组，支持多张图片轮播
   bodyBgImg: {

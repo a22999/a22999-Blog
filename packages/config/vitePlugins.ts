@@ -125,21 +125,14 @@ const registerLoosePlugins = (vitePlugins: Plugins, ignoreDir: Record<string, an
 export const registerTightPlugins = (vitePlugins: Plugins, ignoreDir: Record<string, any[]>) => {
   const plugins: any[] = [];
 
-  const { catalogueOption = {}, fileContentLoaderIgnore = [], sidebarOption = {} } = vitePlugins || {};
+  const { catalogueOption = {}, fileContentLoaderIgnore = [] } = vitePlugins || {};
 
   // 目录页插件
   plugins.push(Catalogue(catalogueOption));
 
-  // 将 sidebarOption.ignoreList 转换为 glob 格式，统一应用到 fileContentLoader
-  const sidebarIgnoreToGlob = (sidebarOption.ignoreList || [])
-    .filter((item: string | RegExp) => typeof item === "string") // 只处理字符串，过滤掉正则表达式
-    .map((item: string) => {
-      // 如果不是 glob 格式，转换为 glob 格式
-      if (!item.includes("*")) {
-        return `**/${item}`;
-      }
-      return item;
-    });
+  // 注意： sidebarOption.ignoreList 不应用到 fileContentLoader
+  // sidebar 的 ignoreList 是用于忽略 sidebar 插件扫描时的目录/文件
+  // fileContentLoader 有自己独立的 ignore 配置: fileContentLoaderIgnore
 
   const fileContentLoaderOptions: FileContentLoaderOptions<TkContentData, PostData> = {
     pattern: ["**/*.md"],
@@ -150,7 +143,7 @@ export const registerTightPlugins = (vitePlugins: Plugins, ignoreDir: Record<str
     transformRaw,
     themeConfigKey: "posts",
     globOptions: {
-      ignore: [...ignoreDir.fileContentLoader, ...sidebarIgnoreToGlob, ...fileContentLoaderIgnore],
+      ignore: [...ignoreDir.fileContentLoader, ...fileContentLoaderIgnore],
     },
   };
 

@@ -42,3 +42,4 @@ export * from "./RiskLinkPage";
 export * from "./RouteLoading";
 export * from "./SidebarTrigger";
 export * from "./ThemeEnhance";
+export * from "./TagsPage";

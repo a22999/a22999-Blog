@@ -1,0 +1,282 @@
+@use "../../mixins/bem" as *;
+@use "../../mixins/function" as *;
+
+@include b(tags-page) {
+  // 头部样式
+  @include e(header) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid getCssVar("line-color");
+
+    h1 {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 24px;
+      font-weight: 500;
+      margin: 0;
+      color: getCssVar("text-color");
+
+      .tk-icon {
+        flex-shrink: 0;
+      }
+    }
+
+    .count {
+      font-size: 14px;
+      color: getCssVar("text-color-secondary");
+      font-weight: 400;
+    }
+  }
+
+  // 内容区域
+  @include e(content) {
+    margin: 24px 0;
+  }
+
+  // 空状态
+  @include e(empty) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 64px 20px;
+    color: getCssVar("text-color-secondary");
+
+    .tk-icon {
+      margin-bottom: 16px;
+      opacity: 0.5;
+    }
+
+    p {
+      font-size: 14px;
+      margin: 0;
+    }
+  }
+
+  // 标签项通用样式
+  @include e(tag-item) {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    border: 1px solid;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+
+    .name {
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .count {
+      font-size: 12px;
+      opacity: 0.8;
+      font-weight: 500;
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    &.active {
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: -4px;
+        right: -4px;
+        width: 8px;
+        height: 8px;
+        background-color: getCssVar("theme-color");
+        border-radius: 50%;
+        border: 2px solid getCssVar("bg-color");
+      }
+    }
+  }
+
+  // 云状模式
+  @include e(cloud) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 20px;
+
+    @include e(tag-item) {
+      padding: 8px 16px;
+      border-radius: 20px;
+
+      .name {
+        font-weight: 500;
+      }
+    }
+
+    // 不同大小的标签有不同的内边距
+    .tk-tags-page__tag-item {
+      &[style*="font-size: 12px"] {
+        padding: 4px 10px;
+      }
+
+      &[style*="font-size: 14px"] {
+        padding: 6px 12px;
+      }
+
+      &[style*="font-size: 16px"] {
+        padding: 8px 14px;
+      }
+
+      &[style*="font-size: 18px"] {
+        padding: 10px 16px;
+      }
+
+      &[style*="font-size: 20px"] {
+        padding: 12px 18px;
+      }
+
+      &[style*="font-size: 22px"] {
+        padding: 14px 20px;
+      }
+
+      &[style*="font-size: 24px"] {
+        padding: 16px 22px;
+      }
+    }
+  }
+
+  // 列表模式
+  @include e(list) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 16px 0;
+
+    @include e(tag-item) {
+      .count {
+        min-width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        padding: 0 6px;
+      }
+    }
+  }
+
+  // 分组模式
+  @include e(group) {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  @include e(group-section) {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 12px;
+    }
+  }
+
+  @include e(group-letter) {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 600;
+    color: getCssVar("theme-color");
+    background-color: getCssVar("fill-color-light");
+    border-radius: 8px;
+  }
+
+  @include e(group-tags) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    flex: 1;
+    padding-top: 4px;
+  }
+
+  // 选中标签提示
+  @include e(selected) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    margin: 16px 0;
+    background-color: getCssVar("fill-color-light");
+    border-radius: 8px;
+    border-left: 4px solid getCssVar("theme-color");
+
+    span {
+      font-size: 14px;
+      color: getCssVar("text-color");
+    }
+  }
+
+  @include e(clear) {
+    padding: 6px 12px;
+    font-size: 13px;
+    color: getCssVar("theme-color");
+    background-color: transparent;
+    border: 1px solid getCssVar("theme-color");
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: getCssVar("bg-color");
+      background-color: getCssVar("theme-color");
+    }
+  }
+
+  // 响应式适配
+  @media (max-width: 768px) {
+    @include e(header) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+
+      h1 {
+        font-size: 20px;
+      }
+    }
+
+    @include e(cloud) {
+      gap: 8px;
+      padding: 12px;
+    }
+
+    @include e(list) {
+      gap: 8px;
+    }
+
+    @include e(group-letter) {
+      width: 36px;
+      height: 36px;
+      font-size: 18px;
+    }
+
+    @include e(selected) {
+      flex-direction: column;
+      gap: 12px;
+      align-items: flex-start;
+    }
+  }
+}

@@ -35,6 +35,7 @@ import { TkVpContainer } from "@teek/components/common/VpContainer";
 import { TkArchivesPage } from "@teek/components/theme/ArchivesPage";
 import { TkCataloguePage } from "@teek/components/theme/CataloguePage";
 import { TkArticleOverviewPage } from "@teek/components/theme/ArticleOverviewPage";
+import { TkTagsPage } from "@teek/components/theme/TagsPage";
 import { TkLoginPage, useWatchLogin } from "@teek/components/theme/LoginPage";
 import { TkRiskLinkPage, useRiskLink } from "@teek/components/theme/RiskLinkPage";
 import { TkSidebarTrigger } from "@teek/components/theme/SidebarTrigger";
@@ -54,7 +55,7 @@ const { Layout } = DefaultTheme;
 
 const ns = useNamespace("layout");
 const { getTeekConfigRef } = useTeekConfig();
-const { isHomePage, isArchivesPage, isCataloguePage, isArticleOverviewPage } = usePageState();
+const { isHomePage, isArchivesPage, isCataloguePage, isArticleOverviewPage, isTagsPage } = usePageState();
 const { frontmatter, localeIndex, page } = useData();
 
 // 支持 provide、frontmatter.tk、frontmatter、theme 配置
@@ -311,6 +312,11 @@ const usedSlots = [
           </template>
         </TkCataloguePage>
         <TkArticleOverviewPage v-if="isArticleOverviewPage" />
+        <TkTagsPage v-if="isTagsPage">
+          <template v-for="(_, name) in $slots" :key="name" #[name]="scope">
+            <slot :name="name" v-bind="scope" />
+          </template>
+        </TkTagsPage>
 
         <slot name="teek-page-top-after" />
       </template>

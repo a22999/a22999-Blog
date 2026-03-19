@@ -156,6 +156,14 @@ export default {
       listLabel: "标签列表",
       moreLabel: "更多 ...",
     },
+    tagsPage: {
+      title: "{icon}全部标签",
+      totalCount: "共 {count} 个标签",
+      empty: "暂无标签",
+      label: "标签页",
+      selected: "当前筛选：{tag}",
+      clear: "清除筛选",
+    },
     topArticleCard: {
       title: "{icon}精选文章",
       label: "首页精选文章卡片",

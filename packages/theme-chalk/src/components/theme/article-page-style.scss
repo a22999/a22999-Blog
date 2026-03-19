@@ -191,3 +191,10 @@ html[layout-mode="original"] {
     }
   }
 }
+
+/* 移动端文档内容容器 padding 修复 */
+@media (max-width: 768px) {
+  .VPDoc .content-container {
+    padding: 15px;
+  }
+}

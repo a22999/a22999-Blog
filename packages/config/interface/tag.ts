@@ -53,4 +53,44 @@ export interface Tag {
    * @default 4000 (4秒)
    */
   pageSpeed?: number;
+  /**
+   * 标签选择器页面配置
+   */
+  tagsPage?: {
+    /**
+     * 页面标题
+     * @default '{icon}全部标签'
+     */
+    title?: string | ((icon: string) => string);
+    /**
+     * 展示模式：'cloud' | 'list' | 'group'
+     * @default 'cloud'
+     */
+    displayMode?: "cloud" | "list" | "group";
+    /**
+     * 是否显示文章数量
+     * @default true
+     */
+    showCount?: boolean;
+    /**
+     * 标签排序方式：'count' | 'name' | 'date'
+     * @default 'count'
+     */
+    sortBy?: "count" | "name" | "date";
+    /**
+     * 标签云模式下的最小字体大小（px）
+     * @default 12
+     */
+    cloudMinSize?: number;
+    /**
+     * 标签云模式下的最大字体大小（px）
+     * @default 24
+     */
+    cloudMaxSize?: number;
+    /**
+     * 空状态文案
+     * @default '暂无标签'
+     */
+    emptyLabel?: string;
+  };
 }

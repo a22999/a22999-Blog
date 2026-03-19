@@ -156,6 +156,14 @@ export default {
       listLabel: "Tag List",
       moreLabel: "More ...",
     },
+    tagsPage: {
+      title: "{icon}All Tags",
+      totalCount: "Total {count} tags",
+      empty: "No tags",
+      label: "Tags Page",
+      selected: "Current filter: {tag}",
+      clear: "Clear filter",
+    },
     topArticleCard: {
       title: "{icon} Featured Articles",
       label: "Home Featured Article Card",

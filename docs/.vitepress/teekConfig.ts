@@ -213,7 +213,7 @@ export const teekConfig = defineTeekConfig({
   },
   // 标签卡片配置
   tag: {
-    enabled: false, // 是否启用标签卡片
+    enabled: true, // 是否启用标签卡片
     path: "/tags", // 标签页访问地址
     pageTitle: "${icon}全部标签", // 标签页页卡片标题
     homeTitle: "${icon}热门标签", // 卡片标题

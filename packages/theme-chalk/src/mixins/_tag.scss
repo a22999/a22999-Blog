@@ -1,0 +1,117 @@
+// 统一的标签样式 mixin
+// 用于所有标签组件保持一致的风格
+
+// 渐变色标签样式
+// $index: 标签索引，用于计算渐变色
+@mixin gradient-tag($index: 0) {
+  display: inline-flex;
+  align-items: center;
+  padding: 0;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  outline: none;
+  overflow: hidden;
+  transition: all 0.2s ease;
+  font-size: 13px;
+  font-weight: 500;
+  color: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+
+  // 6种渐变色循环
+  $gradients: (
+    linear-gradient(135deg, #667eea 0%, #764ba2 100%),
+    linear-gradient(135deg, #f093fb 0%, #f5576c 100%),
+    linear-gradient(135deg, #4facfe 0%, #00f2fe 100%),
+    linear-gradient(135deg, #43e97b 0%, #38f9d7 100%),
+    linear-gradient(135deg, #fa709a 0%, #fee140 100%),
+    linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)
+  );
+
+  $color-index: ($index % 6);
+  background: nth($gradients, $color-index + 1);
+
+  // 最后一个渐变是浅色，需要深色文字
+  @if $color-index == 5 {
+    color: #333;
+  }
+
+  &:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  }
+
+  &:focus-visible {
+    outline: 2px solid getCssVar("theme-color");
+    outline-offset: 1px;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+// 标签名称样式
+@mixin tag-name() {
+  padding: 6px 10px;
+  font-weight: 500;
+  color: inherit;
+}
+
+// 标签数量样式
+@mixin tag-count() {
+  padding: 6px 8px;
+  font-size: 12px;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.2);
+  color: inherit;
+}
+
+// 小尺寸标签
+@mixin gradient-tag-small($index: 0) {
+  @include gradient-tag($index);
+  font-size: 12px;
+
+  .tk-tag__name {
+    padding: 4px 8px;
+    font-size: 12px;
+  }
+
+  .tk-tag__count {
+    padding: 4px 6px;
+    font-size: 11px;
+  }
+}
+
+// 卡片容器样式
+@mixin tag-card() {
+  padding: 16px;
+  background: getCssVar("fill-color-light");
+  border-radius: 12px;
+  border: 1px solid getCssVar("line-color");
+
+  html.dark & {
+    background: getCssVar("fill-color");
+    border-color: getCssVar("line-color-dark");
+  }
+}
+
+// 卡片标题样式
+@mixin tag-card-title() {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: getCssVar("text-color");
+
+  .tk-icon {
+    color: getCssVar("theme-color");
+  }
+
+  html.dark & {
+    color: getCssVar("text-color");
+  }
+}

@@ -18,6 +18,7 @@ import { TkArticleShare } from "@teek/components/theme/ArticleShare";
 import { TkArticleUpdate } from "@teek/components/theme/ArticleUpdate";
 import { TkArticleHeadingHighlight } from "@teek/components/theme/ArticleHeadingHighlight";
 import { TkArticlePageStyle } from "@teek/components/theme/ArticlePageStyle";
+import { TkArticleTags } from "@teek/components/theme/ArticleTags";
 import {
   TkDocAfterAppreciation,
   TkAsideBottomAppreciation,
@@ -145,6 +146,8 @@ const usedSlots = [
   "page-top",
   "aside-outline-before",
   "sidebar-nav-before",
+  "teek-article-tags-before",
+  "teek-article-tags-after",
 ];
 </script>
 
@@ -291,6 +294,10 @@ const usedSlots = [
 
       <template #aside-bottom>
         <slot name="aside-bottom" />
+
+        <slot name="teek-article-tags-before" />
+        <TkArticleTags v-if="frontmatter.article !== false" />
+        <slot name="teek-article-tags-after" />
 
         <slot name="teek-aside-bottom-appreciation-before" />
         <TkAsideBottomAppreciation v-if="teekConfig.appreciation.position === 'aside-bottom'" />

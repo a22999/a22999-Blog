@@ -1,13 +1,14 @@
 <script setup lang="ts" name="Home">
 import type { TeekConfig } from "@teek/config";
 import type { TkHomePostListInstance } from "@teek/components";
-import { ref, provide } from "vue";
+import { ref, provide, computed } from "vue";
 import { useNamespace, useLocale } from "@teek/composables";
 import { useTeekConfig, usePageState } from "@teek/components/theme/ConfigProvider";
 import { TkHomeFullscreenWallpaper } from "@teek/components/theme/HomeFullscreenWallpaper";
 import { TkHomePostList } from "@teek/components/theme/HomePostList";
 import { TkHomeBanner } from "@teek/components/theme/HomeBanner";
 import { TkHomeCardList } from "@teek/components/theme/HomeCardList";
+import { TkTagsSelector } from "@teek/components/theme/TagsSelector";
 import { postDataUpdateSymbol } from "./home";
 
 defineOptions({ name: "Home" });
@@ -15,7 +16,7 @@ defineOptions({ name: "Home" });
 const ns = useNamespace("home");
 const { t } = useLocale();
 
-const { isHomePage } = usePageState();
+const { isHomePage, isTagsPage, isCategoriesPage } = usePageState();
 const { getTeekConfigRef } = useTeekConfig();
 
 const teekConfig = getTeekConfigRef<Required<TeekConfig>>(null, {
@@ -47,6 +48,8 @@ const isPaging = ref(false);
     <div :class="[ns.e('content'), ns.join('wallpaper-outside'), 'flx-start-justify-center']">
       <div :class="ns.e('content__post')" :aria-label="t('tk.home.postLabel')">
         <slot name="teek-home-post-before" />
+        <!-- 标签选择器 -->
+        <TkTagsSelector v-if="isTagsPage" />
         <TkHomePostList v-model="isPaging" ref="homePostListInstance">
           <template v-for="(_, name) in $slots" :key="name" #[name]="scope">
             <slot :name="name" v-bind="scope" />

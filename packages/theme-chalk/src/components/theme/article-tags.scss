@@ -1,0 +1,122 @@
+@use "../../mixins/bem" as *;
+@use "../../mixins/function" as *;
+
+@include b(article-tags) {
+  margin-top: 16px;
+  padding: 16px;
+  // 磨砂玻璃效果
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+
+  html.dark & {
+    background: rgba(30, 30, 30, 0.7);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  // 头部标题
+  @include e(header) {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--vp-c-text-1);
+
+    .tk-icon {
+      color: getCssVar("theme-color");
+    }
+  }
+
+  // 标签列表
+  @include e(list) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  // 标签项 - 统一标签样式
+  @include e(tag) {
+    display: inline-flex;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    outline: none;
+    transition: all 0.2s ease;
+    font-size: 12px;
+    font-weight: 500;
+    background-color: rgba(0, 0, 0, 0.04);
+    color: var(--vp-c-text-1);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+
+    &:hover {
+      transform: translateY(-1px);
+      background-color: getCssVar("theme-color");
+      color: #fff;
+      border-color: getCssVar("theme-color");
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    &:focus-visible {
+      outline: 2px solid getCssVar("theme-color");
+      outline-offset: 1px;
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+
+    html.dark & {
+      background-color: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.12);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  // 标签名称
+  @include e(tag-name) {
+    padding: 5px 10px;
+    font-weight: 500;
+    color: inherit;
+  }
+
+  // 响应式适配
+  @media (max-width: 768px) {
+    padding: 12px;
+
+    @include e(header) {
+      font-size: 13px;
+    }
+
+    @include e(tag) {
+      font-size: 11px;
+    }
+
+    @include e(tag-name) {
+      padding: 4px 8px;
+    }
+  }
+
+  // 高对比度模式支持
+  @media (prefers-contrast: more) {
+    border-width: 2px;
+  }
+
+  // 减少动画模式
+  @media (prefers-reduced-motion: reduce) {
+    @include e(tag) {
+      transition: none;
+
+      &:hover {
+        transform: none;
+      }
+    }
+  }
+}

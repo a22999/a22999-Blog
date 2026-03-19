@@ -69,9 +69,23 @@ const updateData = () => {
     const c = searchParams.get("category");
     post = c ? postConst.groupPosts.categories[c] : post.filter((item: TkContentData) => item.frontmatter.categories);
   } else if (frontmatterConst.tagsPage) {
-    // 在标签页时，如果 URL 查询参数存在 tag，则加载该 tag 的 post，不存在则加载所有 post
-    const t = searchParams.get("tag");
-    post = t ? postConst.groupPosts.tags[t] : post.filter((item: TkContentData) => item.frontmatter.tags);
+    // 在标签页时，支持多标签筛选
+    const selectedTags = searchParams.getAll("tag");
+    if (selectedTags.length > 0) {
+      // 多标签筛选：取交集（文章必须包含所有选中的标签）
+      const postsByTags = selectedTags.map((tag: string) => postConst.groupPosts.tags[tag] || []);
+      if (postsByTags.length === 1) {
+        post = postsByTags[0];
+      } else if (postsByTags.length > 1) {
+        // 取交集：文章必须在所有选中标签的文章列表中
+        post = postsByTags[0].filter((item: TkContentData) =>
+          postsByTags.every((posts: TkContentData[]) => posts.some(p => p.url === item.url))
+        );
+      }
+    } else {
+      // 没有选中标签，显示所有有标签的文章
+      post = post.filter((item: TkContentData) => item.frontmatter.tags);
+    }
   }
 
   // 总数处理

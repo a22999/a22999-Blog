@@ -1,0 +1,307 @@
+@use "../../mixins/bem" as *;
+@use "../../mixins/function" as *;
+
+@include b(tags-selector) {
+  margin-bottom: 20px;
+  padding: 16px 18px;
+  // 磨砂玻璃效果
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+
+  html.dark & {
+    background: rgba(30, 30, 30, 0.7);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  // 头部
+  @include e(header) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+    gap: 10px;
+  }
+
+  @include e(title-wrapper) {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    .tk-icon {
+      color: getCssVar("theme-color");
+      font-size: 18px;
+    }
+  }
+
+  @include e(title) {
+    font-size: 17px;
+    font-weight: 600;
+    margin: 0;
+    color: getCssVar("text-color");
+  }
+
+  @include e(count) {
+    font-size: 11px;
+    color: getCssVar("text-color-secondary");
+    padding: 2px 8px;
+    background: rgba(0, 0, 0, 0.04);
+    border-radius: 10px;
+    font-weight: 500;
+
+    html.dark & {
+      background: rgba(255, 255, 255, 0.08);
+    }
+  }
+
+  @include e(clear-all) {
+    padding: 4px 10px;
+    font-size: 11px;
+    font-weight: 500;
+    color: getCssVar("text-color-secondary");
+    background: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: getCssVar("theme-color");
+      border-color: getCssVar("theme-color");
+    }
+
+    html.dark & {
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+  }
+
+  // 搜索框
+  @include e(search) {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    margin-bottom: 14px;
+    background: rgba(0, 0, 0, 0.03);
+    border-radius: 8px;
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+
+    html.dark & {
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    &:focus-within {
+      border-color: getCssVar("theme-color");
+    }
+
+    .tk-icon {
+      color: getCssVar("text-color-placeholder");
+      font-size: 14px;
+    }
+
+    input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      font-size: 13px;
+      color: getCssVar("text-color");
+      outline: none;
+
+      &::placeholder {
+        color: getCssVar("text-color-placeholder");
+      }
+    }
+  }
+
+  @include e(search-clear) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    border-radius: 50%;
+    color: getCssVar("text-color-placeholder");
+    transition: all 0.15s ease;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.06);
+      color: getCssVar("theme-color");
+
+      html.dark & {
+        background: rgba(255, 255, 255, 0.1);
+      }
+    }
+  }
+
+  // 已选标签区域 - 隐藏
+  @include e(selected-info) {
+    display: none;
+  }
+
+  // 内容区域
+  @include e(content) {
+    min-height: 50px;
+  }
+
+  // 空状态
+  @include e(empty) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 16px;
+    color: getCssVar("text-color-placeholder");
+
+    .tk-icon {
+      margin-bottom: 10px;
+      opacity: 0.4;
+    }
+
+    p {
+      font-size: 13px;
+      margin: 0;
+    }
+  }
+
+  // 无搜索结果
+  @include e(no-result) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+    color: getCssVar("text-color-placeholder");
+
+    p {
+      font-size: 13px;
+      margin: 0;
+    }
+  }
+
+  // 标签云
+  @include e(cloud) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  // 标签项
+  @include e(tag-item) {
+    display: inline-flex;
+    align-items: center;
+    padding: 0;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 13px;
+    outline: none;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    background-color: rgba(0, 0, 0, 0.04);
+    color: var(--vp-c-text-1);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+
+    html.dark & {
+      background-color: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      background-color: getCssVar("theme-color");
+      color: #fff;
+      border-color: getCssVar("theme-color");
+
+      html.dark & {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid getCssVar("theme-color");
+      outline-offset: 1px;
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+
+    // 选中状态
+    &.is-active {
+      background-color: getCssVar("theme-color");
+      color: #fff;
+      border-color: getCssVar("theme-color");
+      box-shadow:
+        0 0 0 2px rgba(0, 0, 0, 0.1),
+        0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  @include e(tag-name) {
+    padding: 6px 10px;
+    font-weight: 500;
+    color: inherit;
+  }
+
+  @include e(tag-count) {
+    padding: 6px 8px;
+    font-size: 12px;
+    font-weight: 600;
+    background: rgba(0, 0, 0, 0.06);
+    color: inherit;
+    transition: all 0.2s ease;
+
+    html.dark & {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    // 选中状态 - 数字高亮
+    .is-active & {
+      background: rgba(255, 255, 255, 0.95);
+      color: getCssVar("theme-color");
+      font-weight: 700;
+    }
+
+    // 深色模式选中状态 - 深灰背景+白色字体
+    html.dark .is-active & {
+      background: rgba(0, 0, 0, 0.35);
+      color: #fff;
+    }
+  }
+
+  // 响应式
+  @media (max-width: 768px) {
+    padding: 14px 16px;
+
+    @include e(header) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    @include e(title) {
+      font-size: 15px;
+    }
+
+    @include e(tag-item) {
+      font-size: 12px;
+    }
+
+    @include e(tag-name) {
+      padding: 5px 8px;
+    }
+
+    @include e(tag-count) {
+      padding: 5px 6px;
+      font-size: 11px;
+    }
+  }
+}

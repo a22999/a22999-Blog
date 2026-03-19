@@ -51,7 +51,8 @@ const componentMap = computed(() => {
     tag: {
       el: TkHomeTagCard,
       props: { tagsPage: tagsPage },
-      show: (homePage || tagsPage) && tag?.enabled !== false,
+      // 标签页时不在右侧卡片区显示，因为已经在文章列表上方有标签选择器
+      show: homePage && tag?.enabled !== false,
       slot: "teek-home-card-tag",
     },
     docAnalysis: {

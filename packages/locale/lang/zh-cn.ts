@@ -163,6 +163,8 @@ export default {
       label: "标签页",
       selected: "当前筛选：{tag}",
       clear: "清除筛选",
+      searchPlaceholder: "搜索标签...",
+      noResult: "未找到匹配的标签",
     },
     topArticleCard: {
       title: "{icon}精选文章",

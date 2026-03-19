@@ -163,6 +163,8 @@ export default {
       label: "Tags Page",
       selected: "Current filter: {tag}",
       clear: "Clear filter",
+      searchPlaceholder: "Search tags...",
+      noResult: "No matching tags found",
     },
     topArticleCard: {
       title: "{icon} Featured Articles",

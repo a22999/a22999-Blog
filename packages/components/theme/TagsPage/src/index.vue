@@ -1,15 +1,14 @@
 <script setup lang="ts" name="TagsPage">
 import type { Tag } from "@teek/config";
 import { useData, useRouter, withBase } from "vitepress";
-import { computed, ref, watch, onMounted } from "vue";
+import { computed, ref, watch, onMounted, inject } from "vue";
 import { useNamespace, useLocale } from "@teek/composables";
-import { tagIcon, emptyIcon } from "@teek/static";
+import { tagIcon, emptyIcon, searchIcon } from "@teek/static";
 import { isFunction } from "@teek/helper";
 import { useTeekConfig, usePagePath, usePosts, useTagColor } from "@teek/components/theme/ConfigProvider";
 import { postDataUpdateSymbol } from "@teek/components/theme/Home/src/home";
 import { TkArticlePage } from "@teek/components/common/ArticlePage";
 import { TkIcon } from "@teek/components/common/Icon";
-import { inject } from "vue";
 
 defineOptions({ name: "TagsPage" });
 
@@ -26,24 +25,16 @@ const { tagPath } = usePagePath();
 // 标签页配置
 const tagsPageConfig = getTeekConfigRef<NonNullable<Tag["tagsPage"]>>("tag", {}).value.tagsPage || {};
 
+// 搜索关键词
+const searchKeyword = ref("");
+const searchInputRef = ref<HTMLInputElement>();
+
 // 当前选中的标签
 const selectedTag = ref("");
 const tagKey = "tag";
 
 // 获取所有标签
 const tags = computed(() => posts.value.groupCards.tags);
-
-// 默认标签配置
-const defaultLabel = computed(() => {
-  const frontmatterConst = frontmatter.value;
-  const title = tagsPageConfig.title;
-  const titleStr = isFunction(title) ? title(tagIcon) : title;
-  return {
-    title: frontmatterConst.title ?? titleStr ?? t("tk.tagsPage.title", { icon: tagIcon }),
-    totalCount: t("tk.tagsPage.totalCount", { count: tags.value.length }),
-    empty: tagsPageConfig.emptyLabel ?? t("tk.tagsPage.empty"),
-  };
-});
 
 // 排序后的标签
 const sortedTags = computed(() => {
@@ -54,7 +45,6 @@ const sortedTags = computed(() => {
     case "name":
       return tagsList.sort((a, b) => a.name.localeCompare(b.name));
     case "date":
-      // 按最新文章日期排序（这里简化为按名称）
       return tagsList;
     case "count":
     default:
@@ -62,10 +52,36 @@ const sortedTags = computed(() => {
   }
 });
 
+// 过滤后的标签
+const filteredTags = computed(() => {
+  if (!searchKeyword.value) return sortedTags.value;
+
+  const keyword = searchKeyword.value.toLowerCase().trim();
+  return sortedTags.value.filter(tag => {
+    const name = tag.name.toLowerCase();
+    const displayName = tag.displayName?.toLowerCase() || "";
+    return name.includes(keyword) || displayName.includes(keyword);
+  });
+});
+
+// 默认标签配置
+const defaultLabel = computed(() => {
+  const frontmatterConst = frontmatter.value;
+  const title = tagsPageConfig.title;
+  const titleStr = isFunction(title) ? title(tagIcon) : title;
+  return {
+    title: frontmatterConst.title ?? titleStr ?? t("tk.tagsPage.title", { icon: tagIcon }),
+    totalCount: t("tk.tagsPage.totalCount", { count: filteredTags.value.length }),
+    empty: tagsPageConfig.emptyLabel ?? t("tk.tagsPage.empty"),
+    searchPlaceholder: t("tk.tagsPage.searchPlaceholder"),
+    noResult: t("tk.tagsPage.noResult"),
+  };
+});
+
 // 按首字母分组的标签（用于 group 模式）
 const groupedTags = computed(() => {
   const groups: Record<string, typeof tags.value> = {};
-  sortedTags.value.forEach(tag => {
+  filteredTags.value.forEach(tag => {
     const firstLetter = tag.name.charAt(0).toUpperCase();
     const key = /^[A-Z]$/.test(firstLetter) ? firstLetter : "#";
     if (!groups[key]) groups[key] = [];
@@ -103,6 +119,25 @@ const getTagStyle = (index: number, length: number, isCloud = false) => {
   return baseStyle;
 };
 
+// 显示模式
+const displayMode = computed(() => tagsPageConfig.displayMode || "cloud");
+
+// 键盘导航处理
+const handleKeydown = (e: KeyboardEvent) => {
+  if (e.key === "Enter" && selectedTag.value) {
+    e.preventDefault();
+    handleSwitchTag(selectedTag.value);
+  } else if (e.key === "Escape" && searchKeyword.value) {
+    clearSearch();
+  }
+};
+
+// 清除搜索
+const clearSearch = () => {
+  searchKeyword.value = "";
+  searchInputRef.value?.focus();
+};
+
 const updatePostListData = inject(postDataUpdateSymbol, () => {});
 
 /**
@@ -133,9 +168,6 @@ const handleSwitchTag = (tag = "") => {
   // 更新文章列表数据
   updatePostListData();
 };
-
-// 显示模式
-const displayMode = computed(() => tagsPageConfig.displayMode || "cloud");
 
 onMounted(() => {
   const { searchParams } = new URL(window.location.href);
@@ -173,6 +205,20 @@ watch(
 
     <slot name="teek-tags-top-after" />
 
+    <!-- 搜索框 -->
+    <div v-if="tags.length > 1" :class="ns.e('search')">
+      <TkIcon :icon="searchIcon" :size="18" />
+      <input
+        ref="searchInputRef"
+        v-model="searchKeyword"
+        :placeholder="defaultLabel.searchPlaceholder"
+        @keydown="handleKeydown"
+      />
+      <button v-if="searchKeyword" :class="ns.e('search-clear')" @click="clearSearch">
+        <TkIcon :icon="emptyIcon" :size="16" />
+      </button>
+    </div>
+
     <!-- 标签展示区域 -->
     <div :class="ns.e('content')">
       <!-- 空状态 -->
@@ -181,10 +227,15 @@ watch(
         <p>{{ defaultLabel.empty }}</p>
       </div>
 
+      <!-- 无搜索结果 -->
+      <div v-else-if="searchKeyword && !filteredTags.length" :class="ns.e('no-result')">
+        <p>{{ defaultLabel.noResult }}</p>
+      </div>
+
       <!-- 云状模式 -->
       <div v-else-if="displayMode === 'cloud'" :class="[ns.e('cloud'), ns.is('active', !!selectedTag)]">
         <a
-          v-for="(item, index) in sortedTags"
+          v-for="(item, index) in filteredTags"
           :key="item.name"
           :style="getTagStyle(index, item.length, true)"
           :class="[{ active: item.name === selectedTag }, ns.e('tag-item')]"
@@ -199,7 +250,7 @@ watch(
       <!-- 列表模式 -->
       <div v-else-if="displayMode === 'list'" :class="[ns.e('list'), ns.is('active', !!selectedTag)]">
         <a
-          v-for="(item, index) in sortedTags"
+          v-for="(item, index) in filteredTags"
           :key="item.name"
           :style="getTagStyle(index, item.length)"
           :class="[{ active: item.name === selectedTag }, ns.e('tag-item')]"
@@ -214,7 +265,7 @@ watch(
       <!-- 分组模式 -->
       <div v-else-if="displayMode === 'group'" :class="[ns.e('group'), ns.is('active', !!selectedTag)]">
         <div v-for="(groupTags, letter) in groupedTags" :key="letter" :class="ns.e('group-section')">
-          <div :class="ns.e('group-letter')">{{ letter }}</div>
+          <div v-if="groupTags.length" :class="ns.e('group-letter')">{{ letter }}</div>
           <div :class="ns.e('group-tags')">
             <a
               v-for="item in groupTags"
